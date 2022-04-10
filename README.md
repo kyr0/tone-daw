@@ -1,5 +1,7 @@
 # Tone.js Digital Audio Workstation (DAW)
 
+[![Join the chat at https://gitter.im/tone-daw/community](https://badges.gitter.im/tone-daw/community.svg)](https://gitter.im/tone-daw/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A Digital Audio Workstation (DAW) that runs in every browser.
 
 Also:
