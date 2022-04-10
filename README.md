@@ -9,6 +9,10 @@ Also:
 - `tone-daw-8bit`: Retro 8bit DAW UI - for chiptunes music production (serves as an end-2-end integration test for the full spectrum capabilities of `tone-daw-core`)
 - `tone-daw-ui-8bit` and `tone-daw-ui-8bit-react` are our UI component libraries used in the 8bit player and DAW UI. The component library is based on Stencil.js and consists of standard web components
 
+## Current Status
+
+Just started; Proof of Concept stage: wildly throwing ideas and code together and seeing, if that actually works
+
 ## About
 
 This project is a love letter to music production and it's 
@@ -87,16 +91,15 @@ feel very welcome to implement it by yourself. If you aren't a developer
 yet, this is not an issue at all. It's actually far easier to learn
 software development, than most people expect. 
 
-Please join our Gitter chat if you'd like to contribute. We're more 
-than happy make sure that you're having fun hacking this project.
+Please join our [Gitter chat room](https://gitter.im/tone-daw/community) if you'd like to contribute. We're more than happy to make sure that you're having fun hacking this project.
 
 ## How do I start to hack this project?
 
-See the setup and build instructions.
+See the setup and build instructions. [Coming soon]
 
 ## Is there any documentation on the architecture?
 
-Of course, please see the technical documentation.
+Of course, please see the technical documentation. [Coming soon]
 
 ## What tone-daw is NOT
 
