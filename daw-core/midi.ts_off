@@ -1,0 +1,41 @@
+import { Midi } from '@tonejs/midi'
+import { noise } from './synth/noise'
+import { pulse } from './synth/pulse'
+import { triangle } from './synth/triangle'
+import { track } from './track'
+
+/*
+export const midi = async(url: string) => {
+    const midiFile = await Midi.fromUrl(url)
+
+
+
+    console.log('midiFile', midiFile.tracks)
+
+    midiFile.tracks.forEach((trackData, index) => {
+
+        let trackInstance;
+
+        switch(index) {
+            case 0:
+                trackInstance = track(pulse(), trackData.notes as any)
+                break;
+            case 1:
+                trackInstance = track(pulse(), trackData.notes as any)
+                break;
+            case 2:
+                trackInstance = track(triangle(), trackData.notes as any)
+                break;
+            case 3:
+                trackInstance = track(noise(), trackData.notes as any)
+                break;
+        }
+
+        if (trackInstance.notes) {
+            const notes = track(tratrackInstanceck.notes)
+        console.log('track', track, notes) 
+        }
+    })
+    
+}
+*/

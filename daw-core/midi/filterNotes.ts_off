@@ -1,0 +1,38 @@
+
+import { NoteInterface } from "@tonejs/midi/dist/Note";
+import { filterDots } from "./filterDots";
+import { filterTime } from "./filterTime";
+import { filterValue } from "./filterValue";
+
+/*
+export const filterNotes = (notes: Array<NoteInterface>) => {
+
+  let timeline = 0;
+  
+  const part: {
+      notes: Array<NoteInterface>;
+      length: number | string
+  } = {notes: [], length: ''};
+  
+  const last = notes.length - 1;
+
+  console.log('notes0', notes)
+
+  notes.forEach((note: any, index) => {
+    note[1] = filterDots(note[1]);
+    note[2] = (index > 0) ? filterTime(timeline) : 0;
+    timeline = (timeline) ? timeline + ' + ' + note[1] : note[1];
+    part.notes.push({"name": filterValue(note[0]) as string, "duration": note[1], "time": filterValue(note[2]), "velocity": 1});
+  })  
+
+  console.log('notes', notes)
+
+  if (notes.length) {
+
+    part.length = filterValue(filterTime((notes[last] as any)[2] + ' + ' + (notes[last] as any)[1]));
+
+  }
+  return part;
+
+}
+*/

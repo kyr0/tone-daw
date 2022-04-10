@@ -1,0 +1,46 @@
+/*export class SequenceParser {
+    constructor (tempoBpm, timeSignatureArray) {
+        this.initialTempo = { value: tempoBpm, unit: 'bpm' };
+        this.initialTimeSignature = { numerator: timeSignatureArray[0], denominator: timeSignatureArray[1] };
+    }
+
+    parse (textMeasures) {
+        const result = [];
+        let firstEvent = true;
+
+        for (const textMeasure of textMeasures) {
+            const event = { };
+
+            if (firstEvent) {
+                event.newTempo = this.initialTempo;
+                event.newTimeSignature = this.initialTimeSignature;
+                firstEvent = false;
+            }
+
+            event.measure = this.parseTextMeasure(textMeasure);
+            result.push(event);
+        }
+
+        return result;
+    }
+
+    parseTextMeasure (textMeasure) {
+        const notes = textMeasure.split(' ')
+            .filter(textNote => !!textNote)
+            .map(textNote => this.parseTextNote(textNote));
+
+        return { notes };
+    }
+
+    parseTextNote (textNote) {
+        const chunks = textNote.split('/');
+        const isNote = (chunks[0] !== 'rest');
+        return {
+            type: isNote ? 'note' : 'rest',
+            name: isNote ? chunks[0] : null,
+            duration: chunks[1] + 'n'
+        };
+    }
+}
+
+const parse*/
