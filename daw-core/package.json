@@ -1,11 +1,14 @@
 {
   "name": "tone-daw-core",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Digital Audio Workstation (DAW) for Tone.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "esbuild ./src/index.ts --sourcemap=external --minify --outfile=./dist/index.mjs --bundle --format=esm --target=chrome58,firefox57,safari11",
+    "postbuild": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Aron Homberg <info@aron-homberg.de>",
   "license": "MIT"
 }

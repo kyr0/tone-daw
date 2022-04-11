@@ -5,9 +5,8 @@ A Digital Audio Workstation (DAW) that runs in every browser.
 Also:
 - `tone-daw-core`: The actual, non-GUI DAW core implementation
 - `tone-module-fileformat`: Shall convert module file formats like `.mod`, `.s3m` and `.xm` to the internal music arrangement JSON data structure
-- `tone-daw-8bit-player`: Retro 8bit UI and audio vizualizing music player (serves as an end-2-end  integration test for playback use-cases)
-- `tone-daw-8bit`: Retro 8bit DAW UI - for chiptunes music production (serves as an end-2-end integration test for the full spectrum capabilities of `tone-daw-core`)
-- `tone-daw-ui-8bit` and `tone-daw-ui-8bit-react` are our UI component libraries used in the 8bit player and DAW UI. The component library is based on Stencil.js and consists of standard web components
+- `chiptunes-daw`: Retro 8bit DAW UI - for chiptunes music production (serves as an end-2-end integration test for the full spectrum capabilities of `tone-daw-core`) - stores files in `tone-module-fileformat`
+- `chiptunes-player`: A player for `tone-module-fileformat`, uses `tone-daw-core` internally for sound generation and comes with beautiful vizualizations (serves as an end-2-end integration test for song and effect playback)
 
 ## Current Status
 
@@ -59,7 +58,6 @@ the fundamental core logic that is necessary to build a modern DAW.
   - Distortion (Amp)
   - Distortion (Chebyshev)
   - Stereo Widener
-  - Phase Shifter
   - Pitch Shifter
 
 This project aims to implement the core logic each DAW has to have,

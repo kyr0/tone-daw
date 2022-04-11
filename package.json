@@ -1,23 +1,26 @@
 {
   "private": true,
   "name": "tone-daw",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Digital Audio Workstation (DAW) for Tone.js (monorepo)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "yarn workspaces run build"
   },
-  "author": "",
+  "author": "Aron Homberg <info@aron-homberg.de>",
   "license": "MIT",
   "workspaces": [
-    "daw-ui-8bit-react",
-    "daw-ui-8bit",
-    "daw-8bit",
+    "chiptunes-daw",
     "daw-core"
   ],
   "devDependencies": {
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.4",
     "typescript": "4.6.3"
+  },
+  "dependencies": {
+    "@tonejs/midi": "^2.0.28",
+    "esbuild": "^0.14.34",
+    "kiss-arch": "^0.10.0",
+    "tone": "^14.7.77"
   }
 }
