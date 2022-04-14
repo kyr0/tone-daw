@@ -25,6 +25,7 @@ class MyDocument extends Document {
         <Head>
           <meta name="description" content="chiptunes.daw.rocks" />
           <link rel="icon" href="/favicon.ico" />
+          <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/minecraftia" type="text/css"/>
           <link
             href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=additional"
             rel="stylesheet"

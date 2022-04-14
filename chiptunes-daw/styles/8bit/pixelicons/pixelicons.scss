@@ -1,0 +1,28 @@
+$icon-size-small: 16px + 6px;
+$icon-size-medium: 24px + 6px;
+$icon-size-large: 32px + 6px;
+
+.pixelicon {
+  display: inline-block;
+  & * {
+    display: block;
+  }
+
+  &.is-size-medium {
+    width: $icon-size-medium;
+    height: $icon-size-medium;
+  }
+
+  &.is-size-large {
+    width: $icon-size-large;
+    height: $icon-size-large;
+  }
+
+  &.is-size-small {
+    width: $icon-size-small;
+    height: $icon-size-small;
+  }
+}
+
+// pixelart https://www.pixelartcss.com/
+@import 'checkmark.scss';
