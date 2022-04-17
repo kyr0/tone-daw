@@ -41,6 +41,7 @@ import { Separator } from '@components/Separator';
 import { Spacer } from '@components/Spacer';
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
+import { Menu } from '@components/Menu';
 
 
 let transportResult: TransportResult;
@@ -79,6 +80,7 @@ const Home = (): JSX.Element => {
   }, []);
 
   const [demoDialogOpen, setDemoDialogOpen] = useState(false)
+  const [showMoreMenu, setShowMoreMenu] = useState(false)
 
   return (
     <>
@@ -91,16 +93,16 @@ const Home = (): JSX.Element => {
         
         <Br />
 
-        <Heading size='xlarge' centered>kyr0/pixel-ui</Heading>
+        <Heading size='xlarge' centered>kyr0/nes-ui-react</Heading>
 
 
         <Br size='medium'/>
 
-        <Text>Welcome back to 1986! This is PIXEL UI, the most comprehensive retro UI component library for React.</Text>
+        <Text>Welcome back to 1986! This is NES UI for React, the most comprehensive anachronistic, retro UI component library for React JS.</Text>
 
-        <Text>We paint the world in 8 bits. Altough the framework can handle light mode, it is advised to switch to dark mode to get the classic console feeling.</Text>
+        <Text>This design system paints the web in 8 bits. Altough the framework can handle light mode, the dask mode feels definitely more like back in the days.</Text>
 
-        <Text>Works great for games, websites and retro-apps.</Text>
+        <Text>The library works great for games, websites and retro-apps (like ).</Text>
 
         <Text>This is a fun project! We welcome every contributor :)</Text>
 
@@ -118,15 +120,9 @@ const Home = (): JSX.Element => {
 
         <Text>TODO:</Text>
         <List styleType='disc'>
-          <li>Icons with Buttons
-          </li>
-            <li>Header with light mode</li>
-          <li>&lt;Scroll&gt; component, that renders with a pixelated scrollbar</li>
           <li>&lt;NumberField&gt; component, that comes with pixelated spinners</li>
           <li>&lt;TypeWriter&gt; component, renders just like &lt;Text&gt; but like a human</li>
-          <li>&lt;Menu&gt; component, that renders many IconButtons in a row</li>
           <li>a comprehensive PixelIcon icon library (custom made)</li>
-          <li>&lt;Toast&gt; should be able to take PixelIcons</li>
         </List>
 
         <Br size='large' />
@@ -142,7 +138,7 @@ const Home = (): JSX.Element => {
 
         <Text>On top of that, the whole NES color palette is exported for programmatic use:</Text>
 
-        {ColorPaletteNames.map((name) => <BlockText shadow shadowInverted key={name} backgroundColor={(Colors as any)[name]} style={{ marginRight: '1.4em', padding: 8 }}>{name}</BlockText>)}
+        {ColorPaletteNames.map((name) => <BlockText className="pixel-border" shadow shadowInverted key={name} backgroundColor={(Colors as any)[name]} style={{ marginRight: '1.4em', padding: 8 }}>{name}</BlockText>)}
       
         <Br size='large' />
 
@@ -499,11 +495,15 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
 
         <Container title='&lt;Toast bubblePostion="right"&gt;' alignTitle="center">
           <Toast>
-            Click on the buttons below to open the possible variants of dialogs. 
+              <PixelIcon name={styles.pixeliconAron} size='large' style={{ marginRight: 20 }} />
+              <Text>Toasts can be used to inform the user about context information. They are great for tutorials and story-telling.</Text>
           </Toast>
 
-          <Toast style={{ float: 'right' }} bubblePostion='right' cursor='pointer'>
-            Right bubble and cursor: pointer
+          <Toast id="foo" style={{ float: 'right' }} bubblePostion='right' cursor='pointer'>
+            <Text size="small" color='white'>
+                Okay, I guess I got it... Meow!<br />And where&lsquo;s my mouse?
+            </Text>
+            <PixelIcon name={styles.pixeliconMeowAnimated} size='small' style={{ marginLeft: 10 }} />
           </Toast>
         </Container>
 
@@ -668,25 +668,25 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
           <Col className="pixel-border" type="1-of-4">
             <Text size='small' centered>
               <br />
-              <pre>.pixel-border</pre>
+              .pixel-border
             </Text>
           </Col>
           <Col className="pixel-border-2" type="1-of-4">
             <Text size='small' centered>
               <br />
-              <pre>.pixel-border-2</pre>
+              .pixel-border-2
             </Text>
           </Col>
           <Col className="pixel-border-2x" type="1-of-4">
             <Text size='small' centered>
               <br />
-              <pre>.pixel-border-2x</pre>
+              .pixel-border-2x
             </Text>
           </Col>
           <Col className="pixel-border-2x-2" type="1-of-4">
             <Text size='small' centered>
               <br />
-              <pre>.pixel-border-2x-2</pre>
+              .pixel-border-2x-2
             </Text>
           </Col>
         </Row>
@@ -694,7 +694,7 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
         <Br size='large' />
 
         <Row>
-          <Heading size='large' centered>Toolbar</Heading>
+          <Heading size='large' centered>&lt;Toolbar&gt;</Heading>
 
           <Text>
             Toolbars are used to group buttons together. They can be used to create a navigation bar, an action toolbar, or in combination with &lt;Header&gt; or &lt;Footer&gt;:
@@ -705,25 +705,35 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
           <Toolbar>
             
             <IconButton color="success" size="small" onClick={onPlayClick}>
-              <PixelIcon name="pixelicon-close-8" size='small' />
-            </IconButton>
-
-            <IconButton color="primary" size="small" onClick={onPlayClick}>
-              <PixelIcon name="pixelicon-close-8" size='small' />
+              <PixelIcon name="pixelicon-checkmark-16" size='small' />
             </IconButton>
 
             <Separator />
 
-            <IconButton disabled size="small" onClick={onPlayClick}>
-              <PixelIcon name="pixelicon-close-8" size='small' />
-            </IconButton>
+            <Spacer />
+            
+            <Text>small &lt;IconButton&gt;&rsquo;s, &lt;Spacer&gt;&rsquo;s and a &lt;Separator&gt;</Text>
 
+            <Spacer />
 
             <IconButton color="error" size="small" onClick={onPlayClick}>
               <PixelIcon name="pixelicon-close-8" size='small' />
             </IconButton>
 
+          </Toolbar>
+
+          <Heading size="medium" centered>Borderless &amp; with edged corners</Heading>
+
+          <Toolbar borderless roundedCorners={false}>
+            
+            <IconButton color="success" size="small" onClick={onPlayClick}>
+              <PixelIcon name="pixelicon-checkmark-16" size='small' />
+            </IconButton>
+
+            <Separator />
+
             <Spacer />
+            
             <Text>small &lt;IconButton&gt;&rsquo;s, &lt;Spacer&gt;&rsquo;s and a &lt;Separator&gt;</Text>
 
             <Spacer />
@@ -738,7 +748,61 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
         <Br size='large' />
 
         <Row>
-          <Heading size='large' centered>Modals</Heading>
+          <Heading size='large' centered>&lt;Menu&gt;</Heading>
+
+          <Text>
+            Menus are a great UI choice whenever a single button is not enough. They can be used to create a dropdown menu or a context menu.
+          </Text>
+
+          <Br size='small' />
+
+          <Menu>
+            
+            <IconButton color="success" size="small" onClick={onPlayClick}>
+              <PixelIcon name="pixelicon-checkmark-16" size='small' />
+              <Text size='small'>Accept</Text>
+            </IconButton>
+
+            <Separator horizontal />
+
+            <IconButton color="error" size="small" onClick={onPlayClick}>
+              <PixelIcon name="pixelicon-close-8" size='small' />
+              <Text size='small'>Decline</Text>
+            </IconButton>
+
+          </Menu>
+
+          <Heading centered>Dropdown menu</Heading>
+
+          <Button onClick={() => setShowMoreMenu(true)}>More...</Button>
+
+          <Menu open={showMoreMenu} modal onClose={() => setShowMoreMenu(false)}>
+            
+            <IconButton color="success" size="small" onClick={onPlayClick}>
+              <PixelIcon name="pixelicon-checkmark-16" size='small' />
+              <Text size='small'>Accept</Text>
+            </IconButton>
+
+            <IconButton color="primary" size="small" onClick={onPlayClick}>
+              <PixelIcon name="pixelicon-checkmark-16" size='small' />
+              <Text size='small'>Accept</Text>
+            </IconButton>
+
+            <Separator horizontal />
+
+            <IconButton color="error" size="small" onClick={onPlayClick}>
+              <PixelIcon name="pixelicon-close-8" size='small' />
+              <Text size='small'>Decline</Text>
+            </IconButton>
+
+          </Menu>
+
+        </Row>
+
+        <Br size='large' />
+
+        <Row>
+          <Heading size='large' centered>&lt;Modal&gt;&rsquo;s</Heading>
 
           <Text>
             Modals allow for opening custom dialogs and prompts as an overlay. 
@@ -766,7 +830,7 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
                 <PixelIcon name="pixelicon-close-8" size='small' />
               </IconButton>
             </Header>
-            <ModalContent>Lorem ipsum dolor</ModalContent>
+            <ModalContent>This is written inside of a &lt;ModalContent&gt; component just to keep the correct distance to all sides of the modal: The &lt;Header&gt; which is above and the &lt;Footer&gt; which is holding the action buttons.</ModalContent>
             <Footer>
               <IconButton color="error" onClick={() => setDemoDialogOpen(false)}>
                 <PixelIcon name="pixelicon-close-8" size='small' />

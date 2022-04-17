@@ -7,7 +7,7 @@ export interface ToastProps extends StyleProps, PropsWithChildren<any> {
 }
 
 export const Toast = ({ className, bubblePostion, cursor, children, style }: ToastProps) => (
-    <p style={style} className={`balloon from-${bubblePostion || 'left'} ${cursor} ${className}`}>
+    <div style={style} className={`toast from-${bubblePostion || 'left'} ${cursor} ${className}`}>
         {children}
-    </p>
+    </div>
 )

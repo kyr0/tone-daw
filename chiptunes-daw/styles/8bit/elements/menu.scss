@@ -1,34 +1,11 @@
-.toolbar-wrapper {
-  &.has-rounded-corners {
-    @include pixel-borders(
-      $corner-size: 1,
-      $border-size: 4px,
-      $border-color: #999,
-      $border-inset-color: false
-    );
-
-    @media (prefers-color-scheme: dark) {
-      @include pixel-borders(
-        $corner-size: 1,
-        $border-size: 4px,
-        $border-color: #333,
-        $border-inset-color: false
-      );
-    }
-  }
-
-  &.is-borderless {
-    border: none;
-  }
-}
-
-.toolbar {
+.menu {
   display: flex;
   margin: 0;
+  min-width: 120px;
   padding: 4px;
-  flex-direction: row;
+  width: fit-content;
+  flex-direction: column;
   align-items: center;
-  background-color: #eee;
 
   @include pixel-borders(
     $corner-size: 0,
@@ -52,20 +29,31 @@
     margin: 0;
     padding: 0;
     display: flex;
+    flex-grow: 1;
+    flex-flow: column;
+    width: 100%;
   }
 
   .icon-button-wrapper,
   .button-wrapper {
     border: none;
-    margin-right: 4px;
+    margin: 0;
+    padding: 0;
     display: flex;
 
+    margin-bottom: 4px;
+
     &:last-child {
-      margin-right: 0;
+      margin-bottom: 0;
     }
   }
 
   &.is-borderless {
     border: none;
+  }
+
+  &.is-modal {
+    position: absolute;
+    z-index: 99999;
   }
 }

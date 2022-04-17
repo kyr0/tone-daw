@@ -1,5 +1,5 @@
 .pixel-border {
-  border-radius: 0 !important;
+  border-radius: 15px;
   @include pixel-borders(
     $corner-size: 1,
     $border-size: 4px,
@@ -18,7 +18,7 @@
 }
 
 .pixel-border-2 {
-  border-radius: 0 !important;
+  border-radius: 32px;
   @include pixel-borders(
     $corner-size: 2,
     $border-size: 4px,

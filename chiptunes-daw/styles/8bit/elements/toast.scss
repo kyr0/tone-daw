@@ -22,7 +22,7 @@
   }
 }
 
-.balloon {
+.toast {
   @include pixel-borders(
     $corner-size: 1,
     $border-size: 4px,
@@ -31,13 +31,17 @@
   );
 
   position: relative;
-  display: inline-block;
+  display: flex;
   padding: 1rem 1.5rem;
   margin: 8px;
   margin-bottom: 30px;
   background-color: $background-color;
 
   > :last-child {
+    margin-bottom: 0;
+  }
+
+  & .text {
     margin-bottom: 0;
   }
 

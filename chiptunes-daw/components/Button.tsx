@@ -8,7 +8,7 @@ export interface ButtonProps extends PropsWithChildren<any>, StyleProps, IdProps
     color?: Color
     size?: 'medium' | 'small'
     inverted?: boolean
-    onClick: EventHandler<any>
+    onClick?: EventHandler<any>
 }
 
 export const Button = ({ style, children, disabled, color, onClick, id, size, inverted }: ButtonProps) => (
