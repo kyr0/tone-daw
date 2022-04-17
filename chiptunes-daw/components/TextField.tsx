@@ -4,11 +4,11 @@ import { InputProps } from "./interface/InputProps"
 import { StyleProps } from "./interface/StyleProps"
 
 export interface TextFieldDerivedProps extends StyleProps, IdProps, InputProps {
-    color?: 'none' | 'success' | 'warning' | 'error',
+    color?: 'none' | 'success' | 'warning' | 'error' | 'primary',
 }
 
 export interface TextFieldProps extends TextFieldDerivedProps {
-    type: 'text' | 'password'
+    type: 'text' | 'password' | 'number' | 'file' | 'color' | 'date' | 'datetime-local' | 'email' | 'month' | 'url' | 'week' | 'search' | 'tel'
 }
 
 export const TextField = ({ ...props }: TextFieldProps) => {

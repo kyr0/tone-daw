@@ -54,6 +54,13 @@
       map-get($success-colors, 'hover')
     );
   }
+
+  &.is-primary {
+    @include border-style(
+      map-get($primary-colors, 'normal'),
+      map-get($primary-colors, 'hover')
+    );
+  }
 }
 
 .field {
@@ -112,4 +119,10 @@ input {
     outline: none;
   }
   outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  padding: 0;
 }

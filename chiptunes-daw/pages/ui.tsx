@@ -42,6 +42,7 @@ import { Spacer } from '@components/Spacer';
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { Menu } from '@components/Menu';
+import useInterval from 'hook/useInterval';
 
 
 let transportResult: TransportResult;
@@ -81,6 +82,16 @@ const Home = (): JSX.Element => {
 
   const [demoDialogOpen, setDemoDialogOpen] = useState(false)
   const [showMoreMenu, setShowMoreMenu] = useState(false)
+  const [exmapleProgressPct, setExampleProgressPct] = useState(20)
+
+  useInterval(
+    () => {
+      // Your custom logic here
+      setExampleProgressPct(exmapleProgressPct + 20 <= 100 ? exmapleProgressPct + 20 : 0)
+    },
+    // Delay in milliseconds or null to stop it
+    1000
+  )
 
   return (
     <>
@@ -120,7 +131,6 @@ const Home = (): JSX.Element => {
 
         <Text>TODO:</Text>
         <List styleType='disc'>
-          <li>&lt;NumberField&gt; component, that comes with pixelated spinners</li>
           <li>&lt;TypeWriter&gt; component, renders just like &lt;Text&gt; but like a human</li>
           <li>a comprehensive PixelIcon icon library (custom made)</li>
         </List>
@@ -467,6 +477,10 @@ const Home = (): JSX.Element => {
               </Col>
             </Row>
 
+            <Row>
+              <Input style={{ width: 120 }} type="number" autoComplete="current-freq" color='primary' name="freq" value="440" label="Frequency (Hz):" />
+            </Row>
+
           </form>
         </Container>
 
@@ -653,7 +667,7 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
 
         <Container title='&lt;Progress value="20" max="100" color="success" /&gt;' alignTitle="center">
           <Progress value="90" max="100" />
-          <Progress value="80" max="100" color='primary' />
+          <Progress value={exmapleProgressPct} max="100" color='primary' />
           <Progress value="30" max="100" color='success' />
           <Progress value="10" max="100" color='warning' />
           <Progress value="50" max="100" color='error' />
@@ -722,6 +736,8 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
 
           </Toolbar>
 
+          <Br size='small' />
+
           <Heading size="medium" centered>Borderless &amp; with edged corners</Heading>
 
           <Toolbar borderless roundedCorners={false}>
@@ -772,7 +788,9 @@ c0ns3c737ur 4d1p15c1ng 3l1t3 31337!`} />
 
           </Menu>
 
-          <Heading centered>Dropdown menu</Heading>
+          <Br size='small' />
+
+          <Heading size="medium" centered>Dropdown menu</Heading>
 
           <Button onClick={() => setShowMoreMenu(true)}>More...</Button>
 
