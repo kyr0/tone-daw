@@ -77,6 +77,10 @@
     content: '';
   }
 
+  option {
+    padding: 0.25em;
+  }
+
   // prettier-ignore
   $types:
     "dark" map-get($default-colors, "normal") map-get($default-colors, "hover"),

@@ -1,12 +1,10 @@
 import { SyntheticEvent, useEffect, useState } from "react"
+import { IdProps } from "./interface/IdProps"
+import { InputProps } from "./interface/InputProps"
 import { StyleProps } from "./interface/StyleProps"
 
-export interface BooleanFieldDerivedProps extends StyleProps {
-    name: string
-    value: string
-    label: string
+export interface BooleanFieldDerivedProps extends StyleProps, IdProps, InputProps {
     checked?: boolean
-    disabled?: boolean
 }
 
 export interface BooleanFieldProps extends BooleanFieldDerivedProps {
@@ -21,6 +19,10 @@ export const BooleanField = ({ ...props }: BooleanFieldProps) => {
     const onValueChange = (evt: SyntheticEvent) => {
         setChecked((evt.target as HTMLInputElement).checked)
         setValue((evt.target as HTMLInputElement).value)
+
+        if (props.onChange) {
+            props.onChange((evt.target as HTMLInputElement).value, evt)
+        }
     }
 
     useEffect(() => {
@@ -30,7 +32,7 @@ export const BooleanField = ({ ...props }: BooleanFieldProps) => {
 
     return (
         <label className={`is-${props.type}`}>
-            <input type={props.type} className={`${props.type} ${props.disabled ? 'is-disabled' : ''} ${props.className}`} disabled={props.disabled} name={props.name} style={props.style} value={value} checked={checked} onChange={props.disabled ? () => {} : onValueChange} />
+            <input id={props.id} type={props.type} className={`${props.type} ${props.disabled ? 'is-disabled' : ''} ${props.className}`} disabled={props.disabled} name={props.name} style={props.style} value={value} checked={checked} onChange={props.disabled ? () => {} : onValueChange} />
             <span>{props.label}</span>
         </label>
     )

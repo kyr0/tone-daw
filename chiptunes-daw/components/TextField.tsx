@@ -1,7 +1,10 @@
-import { HTMLProps, SyntheticEvent, useEffect, useState } from "react"
+import { SyntheticEvent, useEffect, useState } from "react"
+import { IdProps } from "./interface/IdProps"
+import { InputProps } from "./interface/InputProps"
+import { StyleProps } from "./interface/StyleProps"
 
-export interface TextFieldDerivedProps extends HTMLProps<HTMLInputElement> {
-    validationMode?: 'none' | 'success' | 'warning' | 'error'
+export interface TextFieldDerivedProps extends StyleProps, IdProps, InputProps {
+    color?: 'none' | 'success' | 'warning' | 'error',
 }
 
 export interface TextFieldProps extends TextFieldDerivedProps {
@@ -14,6 +17,10 @@ export const TextField = ({ ...props }: TextFieldProps) => {
 
     const onValueChange = (evt: SyntheticEvent) => {
         setValue((evt.target as HTMLInputElement).value)
+
+        if (props.onChange) {
+            props.onChange((evt.target as HTMLInputElement).value, evt)
+        }
     }
 
     useEffect(() => {
@@ -23,7 +30,7 @@ export const TextField = ({ ...props }: TextFieldProps) => {
     return (
         <div className="field">
             <label htmlFor={props.name}>{props.label}</label>
-            <input autoComplete={props.autoComplete} type={props.type} className={`input ${props.disabled ? 'is-disabled' : ''} ${props.validationMode ? 'is-' + props.validationMode : ''} ${props.className}`} disabled={props.disabled} name={props.name} style={props.style} value={value} onChange={props.disabled ? () => {} : onValueChange} />
+            <input id={props.id} autoComplete={props.autoComplete} type={props.type} className={`input ${props.disabled ? 'is-disabled' : ''} ${props.color ? 'is-' + props.color : ''} ${props.className}`} disabled={props.disabled} name={props.name} style={props.style} value={value} onChange={props.disabled ? () => {} : onValueChange} />
         </div>
     )
 }

@@ -1,33 +1,33 @@
-import { applyStyle } from "./function/applyStyle";
 import { Color } from "./interface/Color";
+import { IdProps } from "./interface/IdProps";
 import { StyleProps } from "./interface/StyleProps";
 
-export interface BadgeProps extends StyleProps {
-    bgColor: Color
-    fontColor?: string
+export interface BadgeProps extends StyleProps, IdProps {
+    backgroundColor: Color | string;
+    color?: string
     text: string
 }
 
 export const Badge = (badgeProps: BadgeProps) =>(
-  <span className={`badge ${badgeProps.className}`} style={badgeProps.style}>
-    <span className={`is-${badgeProps.bgColor}`} style={applyStyle('fontColor', badgeProps, 'color')}>{badgeProps.text}</span>
+  <span id={badgeProps.id} className={`badge ${badgeProps.className}`} style={{...badgeProps.style, backgroundColor: badgeProps.backgroundColor.startsWith('#') ? badgeProps.backgroundColor : 'inherit'}}>
+    <span className={`is-${badgeProps.backgroundColor}`} style={{ color: badgeProps.color}}>{badgeProps.text}</span>
   </span>
 );
 
 export interface BadgeSplittedProps extends BadgeProps {
-    bgColorLeft?: Color
+    backgroundColorLeft?: Color
     textLeft: string
-    fontColorLeft?: string
+    colorLeft?: string
 }
 
 export const BadgeSplitted = (badgeSplittedProps: BadgeSplittedProps = {
-    bgColorLeft: 'dark',
-    bgColor: 'success',
+    backgroundColorLeft: 'black',
+    backgroundColor: 'success',
     textLeft: 'left',
     text: 'right',
 }) => (
-  <span className={`badge is-split ${badgeSplittedProps.className}`} style={badgeSplittedProps.style}>
-    <span className={`is-${badgeSplittedProps.bgColorLeft || 'dark'}`} style={{ color: badgeSplittedProps.fontColorLeft || '#fff' }}>{badgeSplittedProps.textLeft}</span>
-    <span className={`is-${badgeSplittedProps.bgColor}`} style={{ color: badgeSplittedProps.fontColor || '#000' }}>{badgeSplittedProps.text}</span>
+  <span id={badgeSplittedProps.id} className={`badge is-split ${badgeSplittedProps.className}`} style={badgeSplittedProps.style}>
+    <span className={`is-${badgeSplittedProps.backgroundColorLeft || 'dark'}`} style={{ color: badgeSplittedProps.colorLeft || '#fff' }}>{badgeSplittedProps.textLeft}</span>
+    <span className={`is-${badgeSplittedProps.backgroundColor}`} style={{ color: badgeSplittedProps.color || '#000' }}>{badgeSplittedProps.text}</span>
   </span>
 )

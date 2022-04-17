@@ -1,6 +1,6 @@
-$grid-width: 100em;
-$gutter-vertical: 2em;
-$gutter-horizontal: 2em;
+$grid-width: 100em !default;
+$gutter-vertical: 2em !default;
+$gutter-horizontal: 2em !default;
 
 .row {
   max-width: $grid-width;

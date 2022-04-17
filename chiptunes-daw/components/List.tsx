@@ -1,14 +1,15 @@
 import { PropsWithChildren } from "react";
+import { IdProps } from "./interface/IdProps";
 import { StyleProps } from "./interface/StyleProps";
 
-export interface ListProps extends StyleProps, PropsWithChildren<any> {
-    listStyle?: 'disc' | 'circle'
+export interface ListProps extends StyleProps, PropsWithChildren<any>, IdProps {
+    styleType?: 'disc' | 'circle'
 }
 
-export const List = ({ style, children, listStyle }: ListProps) => {
+export const List = ({ id, style, children, styleType }: ListProps) => {
     return (
         <div className="lists">
-            <ul className={`list is-${listStyle || 'disc'}`} style={style}>
+            <ul id={id} className={`list is-${styleType || 'disc'}`} style={style}>
                 {children}
             </ul>
         </div>

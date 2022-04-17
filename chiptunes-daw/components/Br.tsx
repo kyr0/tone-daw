@@ -1,4 +1,7 @@
-export interface BrProps {
+import { IdProps } from "./interface/IdProps";
+import { StyleProps } from "./interface/StyleProps";
+
+export interface BrProps extends StyleProps, IdProps {
     height?: number | string;
     size?: 'small' | 'medium' | 'large';
 }
@@ -17,4 +20,4 @@ const calcHeight = (size: BrProps['size'], height?: number|string) => {
     }
 }
 
-export const Br = ({ height, size }: BrProps) => <div style={{ height: calcHeight(size || 'small', height)}} />
+export const Br = ({ height, size, style, id }: BrProps) => <div id={id} style={{ ...style, height: calcHeight(size || 'small', height)}} />

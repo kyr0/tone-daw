@@ -1,3 +1,25 @@
+.button-wrapper,
+.icon-button-wrapper {
+  height: fit-content;
+  @include pixel-borders(
+    $corner-size: 1,
+    $border-size: 4px,
+    $border-color: #000,
+    $border-inset-color: false
+  );
+  display: flex;
+  margin-right: 1em;
+
+  &.is-inverted {
+    @include pixel-borders(
+      $corner-size: 1,
+      $border-size: 4px,
+      $border-color: #fff,
+      $border-inset-color: false
+    );
+  }
+}
+
 @mixin btn-style($color, $background, $hover-background, $shadow) {
   color: $color;
   background-color: $background;
@@ -18,12 +40,12 @@
     background-color: $hover-background;
 
     &::after {
-      box-shadow: inset -6px -6px $shadow;
+      box-shadow: inset -4px -4px $shadow;
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 6px rgba($shadow, 0.3);
+    box-shadow: 0 0 0 4px rgba($shadow, 0.3);
   }
 
   &:active:not(.btn-disabled)::after {
@@ -32,17 +54,42 @@
 }
 
 // Default style
-.btn {
+.btn,
+.icon-btn {
   @include rounded-corners();
-
   position: relative;
   display: inline-block;
-  padding: 6px 8px;
-  margin: $border-size;
+  padding-left: 2px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  margin: 0;
   text-align: center;
   vertical-align: middle;
   cursor: $cursor-click-url, pointer;
   user-select: none;
+
+  & .text {
+    margin: 0;
+    color: #fff !important;
+    margin-left: 4px;
+    margin-top: 2px;
+
+    &:first-child {
+      margin-right: 4px;
+    }
+  }
+
+  &:active:not(.btn-disabled) {
+    & .text {
+      margin-top: -2px;
+      margin-left: 2px;
+
+      &:first-child {
+        margin-right: 6px;
+      }
+    }
+  }
 
   @include btn-style(
     $base-color,
@@ -54,6 +101,12 @@
   &:focus {
     outline: 0;
   }
+  &:active:not(.btn-disabled) {
+    padding-left: 4px;
+    padding-right: 2px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+  }
 
   &.btn-disabled,
   &.btn-disabled:hover,
@@ -61,7 +114,6 @@
     color: $base-color;
     cursor: not-allowed;
     background-color: map-get($disabled-colors, 'normal');
-    box-shadow: inset -4px -4px map-get($disabled-colors, 'shadow');
     opacity: 0.6;
   }
 
@@ -93,6 +145,36 @@
     pointer-events: none;
     opacity: 0;
   }
+
+  &.is-size-small {
+    font-size: 75%;
+    padding-left: 2px;
+    padding-right: 4px;
+    padding-top: 0px;
+    padding-bottom: 4px;
+
+    &:active:not(.btn-disabled) {
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-top: 1px;
+      padding-bottom: 3px;
+    }
+  }
+
+  &.is-size-large {
+    font-size: 125%;
+    padding-left: 2px;
+    padding-right: 4px;
+    padding-top: 0px;
+    padding-bottom: 4px;
+
+    &:active:not(.btn-disabled) {
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-top: 1px;
+      padding-bottom: 3px;
+    }
+  }
 }
 
 button,
@@ -104,5 +186,116 @@ input[type='button'] {
   &:hover,
   &:active {
     outline: 0;
+  }
+}
+
+// --- icon button
+
+.button-wrapper,
+.icon-button-wrapper {
+  @include pixel-borders(
+    $corner-size: 1,
+    $border-size: 4px,
+    $border-color: #000,
+    $border-inset-color: false
+  );
+  display: inline-block;
+  margin-right: 1em;
+
+  &.is-inverted {
+    @include pixel-borders(
+      $corner-size: 1,
+      $border-size: 4px,
+      $border-color: #000,
+      $border-inset-color: false
+    );
+
+    // if media prefers dark mode
+    @media (prefers-color-scheme: dark) {
+      @include pixel-borders(
+        $corner-size: 1,
+        $border-size: 4px,
+        $border-color: #fff,
+        $border-inset-color: false
+      );
+    }
+  }
+}
+
+@mixin btn-style($color, $background, $hover-background, $shadow) {
+  color: $color;
+  background-color: $background;
+
+  &::after {
+    position: absolute;
+    top: -$border-size;
+    right: -$border-size;
+    bottom: -$border-size;
+    left: -$border-size;
+    content: '';
+    box-shadow: inset -4px -4px $shadow;
+  }
+
+  &:hover {
+    color: $color;
+    text-decoration: none;
+    background-color: $hover-background;
+
+    &::after {
+      box-shadow: inset -4px -4px $shadow;
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 4px rgba($shadow, 0.3);
+  }
+
+  &:active:not(.btn-disabled)::after {
+    box-shadow: inset 4px 4px $shadow;
+  }
+}
+
+// Default style
+// padding: 6px 8px;
+.icon-btn {
+  padding: 0;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+
+  &.is-size-small {
+    padding-bottom: 4px;
+    padding-right: 4px;
+  }
+
+  & * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .pixelicon {
+    position: relative;
+    left: -2px;
+    top: -2px;
+  }
+
+  &:active:not(.btn-disabled) {
+    padding: 0;
+    padding-top: 4px;
+    padding-left: 4px;
+
+    &.is-size-small {
+      padding-top: 4px;
+      padding-left: 4px;
+    }
+
+    & .pixelicon:not(.btn-disabled) {
+      position: relative;
+      left: -4px;
+      top: -4px;
+    }
   }
 }

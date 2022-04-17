@@ -51,3 +51,19 @@
     color: map_get($disabled-colors, 'normal');
   }
 }
+
+.block-text {
+  display: inline-block;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: $base-color;
+
+  &.is-shadow {
+    text-shadow: 1px 1px #fff;
+
+    @media (prefers-color-scheme: dark) {
+      text-shadow: 1px 1px #000;
+    }
+  }
+}

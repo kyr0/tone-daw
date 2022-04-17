@@ -1,0 +1,12 @@
+.separator {
+  display: flex;
+  height: 20px;
+  width: 4px;
+  background-color: #aaa;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #444;
+  }
+  margin-left: 2px;
+  margin-right: 6px;
+}
